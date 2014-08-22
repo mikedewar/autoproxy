@@ -1,4 +1,3 @@
-sudo service nginx start
 ./autoproxy
 nginx -s reload -c autoproxy.conf
 
