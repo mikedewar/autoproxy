@@ -7,7 +7,7 @@ http{
 		listen 80;
 		{{range .}}
 		location /{{.Service}} {
-			proxy_pass {{.Host}};
+			proxy_pass http://{{.Host}};
 		}
 		{{end}}
 	}
