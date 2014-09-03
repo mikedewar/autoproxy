@@ -58,7 +58,7 @@ func main() {
 		log.Fatal(err)
 	}
 	// open output file
-	fo, err := os.Create("/usr/share/nginx/autoproxy.conf")
+	fo, err := os.Create("/etc/nginx/nginx.conf")
 	if err != nil {
 		panic(err)
 	}

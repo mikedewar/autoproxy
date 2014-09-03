@@ -3,12 +3,14 @@ events {
 }
 
 http{
+	{{range .}}
 	server{
 		listen 80;
-		{{range .}}
-		location /{{.Service}} {
-			proxy_pass http://{{.Host}};
+		server_name {{.Service}}.editor.nytlabs.com
+		location / {
+			proxy_pass http://{{.Host}}/;
+			proxy_set_header Host $host;
 		}
-		{{end}}
 	}
+	{{end}}
 }
