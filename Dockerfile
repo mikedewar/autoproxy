@@ -4,4 +4,4 @@ RUN sudo apt-get install -y nginx curl
 ADD . .
 EXPOSE 80
 RUN chmod +x watch_etcd_autoproxy.sh
-ENTRYPOINT /watch_etcd_autoproxy.sh
+CMD /watch_etcd_autoproxy.sh

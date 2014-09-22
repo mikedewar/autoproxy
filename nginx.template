@@ -3,13 +3,20 @@ events {
 }
 
 http{
+  map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+  }
+
 	{{range .}}
 	server{
 		listen 80;
-		server_name {{.Service}}.editor.nytlabs.com
+		server_name {{.Service}}.nytlabs.com;
 		location / {
 			proxy_pass http://{{.Host}}/;
 			proxy_set_header Host $host;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
 		}
 	}
 	{{end}}
